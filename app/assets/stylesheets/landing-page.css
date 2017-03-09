@@ -21,6 +21,11 @@ h6 {
     font-weight: 700;
 }
 
+main {
+    padding-left: 0px;
+    padding-right: 0px
+}
+
 .topnav {
     font-size: 14px;
 }
@@ -35,11 +40,12 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(http://ironsummitmedia.github.io/startbootstrap-landing-page/img/intro-bg.jpg) no-repeat center center;
+    background: url(http://twohandy.com.au/wp-content/uploads/2016/03/Tools.jpg) no-repeat center center;
     background-size: cover;
 }
 
 .intro-message {
+    float: right;
     position: relative;
     padding-top: 20%;
     padding-bottom: 20%;
