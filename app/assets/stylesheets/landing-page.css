@@ -4,6 +4,10 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+body {
+    margin: 0px;
+}
+
 body,
 html {
     width: 100%;
