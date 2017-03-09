@@ -1,0 +1,17 @@
+.panel.panel-default style="margin-top: 40px; margin-bottom: -40px"
+    .panel-heading    
+        h3 Tipo da conta
+    .panel-body
+        = simple_form_for @user, url: next_wizard_path do |f|
+            .form-check.form-check-inline
+                label.control-label.radio-inline
+                    = f.radio_button :acc_type, 0
+                    |   Cliente
+                label.control-label.radio-inline
+                    = f.radio_button :acc_type, 1
+                    |   Integrador
+                label.control-label.radio-inline
+                    = f.radio_button :acc_type, 2
+                    |   Fornecedor
+
+            = f.submit "Continuar", style: "margin-top: 15px; float:right", class: "btn btn-default"

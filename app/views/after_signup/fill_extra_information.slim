@@ -1,0 +1,22 @@
+.panel.panel-default style="margin-top: 40px; margin-bottom: -40px"
+    .panel-heading
+        h3 Informações extras
+    .panel-body
+        = simple_form_for @user, url: next_wizard_path, html: { class: "form-horizontal" } do |f|
+            - if @user.client?
+                .form-group
+                    = f.label :cpf, class: "control-label col-sm-2"
+                    .col-sm-10
+                        = f.text_field :cpf, autofocus: true, class: "form-control"
+            - elsif @user.integrator?
+                .form-group
+                    = f.label :cnpj, class: "control-label col-sm-2"
+                    .col-sm-10
+                        = f.text_field :cpf_cnpj, autofocus: true, class: "form-control"
+            - else
+                .form-group
+                    = f.label :cnpj, class: "control-label col-sm-2"
+                    .col-sm-10
+                        = f.text_field :cpf_cnpj, autofocus: true, class: "form-control"
+
+            = f.submit "Continuar", style: "margin-top: 15px; float:right", class: "btn btn-default"
