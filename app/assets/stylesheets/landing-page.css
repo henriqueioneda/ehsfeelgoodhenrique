@@ -23,6 +23,14 @@ h5,
 h6 {
     font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: #555;
 }
 
@@ -33,6 +41,10 @@ label {
 main {
     padding-left: 0px;
     padding-right: 0px;
+}
+
+.row {
+    max-width: 100%;
 }
 
 .topnav {

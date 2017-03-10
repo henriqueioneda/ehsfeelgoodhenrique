@@ -1,17 +1,71 @@
-.panel.panel-default style="margin-top: 40px; margin-bottom: -40px"
-    .panel-heading    
-        h3 Tipo da conta
-    .panel-body
-        = simple_form_for @user, url: next_wizard_path do |f|
-            .form-check.form-check-inline
-                label.control-label.radio-inline
-                    = f.radio_button :acc_type, 0
-                    |   Cliente
-                label.control-label.radio-inline
-                    = f.radio_button :acc_type, 1
-                    |   Integrador
-                label.control-label.radio-inline
-                    = f.radio_button :acc_type, 2
-                    |   Fornecedor
+/ .dark-font 
+/     h3 style="margin-bottom: 30px" Tipo da conta
+/     = simple_form_for @user, url: next_wizard_path do |f|
+/         .form-check.form-check-inline
+/             label.control-label.radio-inline
+/                 = f.radio_button :acc_type, 0
+/                 |   Cliente
+/             label.control-label.radio-inline
+/                 = f.radio_button :acc_type, 1
+/                 |   Integrador
+/             label.control-label.radio-inline
+/                 = f.radio_button :acc_type, 2
+/                 |   Fornecedor
 
-            = f.submit "Continuar", style: "margin-top: 15px; float:right", class: "btn btn-default"
+/         = f.submit "Continuar", style: "margin-top: 15px; float:right", class: "btn btn-default"
+.container.select-account.dark-font style="margin-top: 40px; margin-bottom: -40px"
+  .row
+    .col-xs-12.col-md-3
+      .panel.panel-default
+        .panel-body
+          .the-price
+            h1
+              | Cliente
+          table.table
+            tr
+              td
+                | Procurar serviços
+            tr.active
+              td
+                | Pedir serviços
+            tr
+              td
+                | Acompanhar a execução dos serviços
+        .panel-footer
+          = link_to "Escolher", next_wizard_path(user: { acc_type: 0 }), class: "btn btn-success"
+    .col-xs-12.col-md-3
+      .panel.panel-default
+        .panel-body
+          .the-price
+            h1
+              | Integrador
+          table.table
+            tr
+              td
+                | Gerenciar serviços
+            tr.active
+              td
+                | Gerenciar pagamentos
+            tr
+              td
+                | Integrar fornecedores
+        .panel-footer
+          = link_to "Escolher", next_wizard_path(user: { acc_type: 1 }), class: "btn btn-success"
+    .col-xs-12.col-md-3
+      .panel.panel-info
+        .panel-body
+          .the-price
+            h1
+              | Fornecedor
+          table.table
+            tr
+              td
+                | Prestar serviços específicos
+            tr.active
+              td
+                | Divulgar serviços
+            tr
+              td
+                | Fácil recolhimento de pagamento
+        .panel-footer
+          = link_to "Escolher", next_wizard_path(user: { acc_type: 2 }), class: "btn btn-success"

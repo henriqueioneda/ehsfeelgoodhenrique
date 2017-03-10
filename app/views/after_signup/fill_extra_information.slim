@@ -1,22 +1,36 @@
-.panel.panel-default style="margin-top: 40px; margin-bottom: -40px"
-    .panel-heading
-        h3 Informações extras
-    .panel-body
-        = simple_form_for @user, url: next_wizard_path, html: { class: "form-horizontal" } do |f|
-            - if @user.client?
-                .form-group
-                    = f.label :cpf, class: "control-label col-sm-2"
-                    .col-sm-10
-                        = f.text_field :cpf, autofocus: true, class: "form-control"
-            - elsif @user.integrator?
-                .form-group
-                    = f.label :cnpj, class: "control-label col-sm-2"
-                    .col-sm-10
-                        = f.text_field :cpf_cnpj, autofocus: true, class: "form-control"
-            - else
-                .form-group
-                    = f.label :cnpj, class: "control-label col-sm-2"
-                    .col-sm-10
-                        = f.text_field :cpf_cnpj, autofocus: true, class: "form-control"
+.dark-font style="margin-top: 40px; margin-bottom:-40px"        
+    h3 style="margin-bottom: 30px" Informações extras
+    = simple_form_for @user, url: next_wizard_path, html: { class: "form-horizontal" } do |f|
+        - if @user.client?
+            .form-group
+                = f.label "CPF", class: "control-label col-sm-2 col-sm-offset-1"
+                .col-sm-4
+                    = f.text_field :cpf_cnpj, autofocus: true, class: "form-control"
+            .form-group
+                = f.label "Cartão de crédito", class: "control-label col-sm-2 col-sm-offset-1"
+                .col-sm-4
+                    = f.text_field :cc_number, autofocus: true, class: "form-control"
+            .form-group
+                = f.label "Nome impresso no cartão", class: "control-label col-sm-2 col-sm-offset-1"
+                .col-sm-4
+                    = f.text_field :cc_name, autofocus: true, class: "form-control"
+            .form-group
+                = f.label "Data de expiração", class: "control-label col-sm-2 col-sm-offset-1"
+                .col-sm-2
+                    = f.text_field :cc_exp, autofocus: true, class: "form-control"
+        - elsif @user.integrator?
+            .form-group
+                = f.label :cnpj, class: "control-label col-sm-2"
+                .col-sm-6
+                    = f.text_field :cpf_cnpj, autofocus: true, class: "form-control"
+        - else
+            .form-group
+                = f.label :cnpj, class: "control-label col-sm-2"
+                .col-sm-6
+                    = f.text_field :cpf_cnpj, autofocus: true, class: "form-control"
+            .form-group
+                = f.label :cnpj, class: "control-label col-sm-2"
+                .col-sm-6
+                    = f.text_field :cpf_cnpj, autofocus: true, class: "form-control"
 
-            = f.submit "Continuar", style: "margin-top: 15px; float:right", class: "btn btn-default"
+        = f.submit "Continuar", style: "margin-top: 15px", class: "btn btn-default col-sm-offset-9"

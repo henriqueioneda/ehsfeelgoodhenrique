@@ -14,8 +14,8 @@ html
     main[role="main"]
       == render 'layouts/messages'
       - if controller_name == "after_signup"
-        .row
-          .col-xs-4.col-xs-offset-4
+        .row.select-account-type
+          .col-xs-offset-2
             == yield
       - else
         == yield
