@@ -11,15 +11,16 @@ nav.navbar.navbar-default.navbar-fixed-top.topnav role="navigation"
     /! Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        - unless user_signed_in?
+        - if user_signed_in?
+          li
+            = link_to "Meus pagamentos", payments_path
+        - else
           li
             a#about href="#about"  Sobre
           li
             a#services href="#services"  Serviços
           li
             a#contact href="#contact"  Contato
-        li
-          = link_to "Meus pagamentos", payments_path
         = render 'layouts/nav_links_for_auth'
 
 javascript:

@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def payments
     Payment.where(payer_id: self.id).or(Payment.where(payee_id: self.id))
   end
+
+  def to_s
+    self.name
+  end
 end

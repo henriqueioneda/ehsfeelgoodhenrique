@@ -9,6 +9,9 @@ class PaymentsController < ApplicationController
   # GET /payments/1
   # GET /payments/1.json
   def show
+    @payee = @payment.payee
+    @payer = @payment.payer
+    @total_spents = @payment.spents.map{ |spent| spent[:value] }.reduce(&:+)
   end
 
   # GET /payments/new

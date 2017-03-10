@@ -17,12 +17,13 @@
                   i.glyphicon.glyphicon-hourglass
                 span.month Pendente
             .info.col-xs-6
-              h2.title ##{payment.id}
-              p.desc Valor: #{humanized_money_with_symbol payment.value}
+              h2.title Pagamento ID ##{payment.id}
+              p.desc Valor: #{format_money payment.value}
               p.desc Pagador: #{payment.payer}
               p.desc Recebedor: #{payment.payee}
               p.desc Data: #{payment.created_at.strftime("%d/%m/%y")}
             .info.pad-top
-              = button_to "Fatura", "#", class: "btn btn-default mar-bot"
-              = button_to "Comprovante", "#", class: "btn btn-default"
+              = button_to "Fatura", payment_path(payment.id), method: :get, class: "btn btn-default mar-bot"
+              - if payment.paid?
+                = button_to "Comprovante", "#", class: "btn btn-default"
               

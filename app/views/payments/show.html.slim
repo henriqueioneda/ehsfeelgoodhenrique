@@ -1,6 +1,70 @@
 p#notice = notice
 
+section.content.content_content.invoice-container style=("width: 70%; margin: auto;") 
+  section.invoice
+    .row
+      .col-xs-12
+        h2.page-header
+          | EHSFeelGood
+          small.pull-right Emissão: #{Time.now.strftime("%d/%m/%y %H:%M:%S")}
+    .row.invoice-info
+      .col-sm-4.invoice-col
+        | De
+        address.dark-font
+          strong
+            | #{@payer}
+          br/
+          | #{@payer.address}
+          br/
+          | #{@payer.phone}
+          br/
+          | #{@payer.email}
+      .col-sm-4.invoice-col
+        | Para
+        address.dark-font
+          strong
+            | #{@payee}
+          br/
+          | #{@payee.address}
+          br/
+          | #{@payee.phone}
+          br/
+          | #{@payee.email}
+      .col-sm-4.invoice-col
+        b Fatura do pagamento #{@payment.id}
+        br/
+        br/
+        b.text-danger Vencimento: #{@payment.due_date.strftime("%d/%m/%y")}
+        br/
+        b Conta: #{@payee.bank_account}
+        br/
+        b Agência: #{@payee.bank_agency}
+    .row
+      .col-xs-12.table-responsive
+        table.table.table-striped
+          thead
+            tr
+              th Nome
+              th Valor
+          tbody
+            - @payment.spents.each do |spent|
+                tr
+                    td #{spent[:name]}
+                    td #{format_money(spent[:value])}
+            tr
+                td.strong Total
+                td.strong #{format_money(@total_spents)}
+    .row.no-print
+      .col-xs-12
+        a.btn.btn-default href="" 
+          i.fa.fa-print
+          | &nbsp; Print
+        button.btn.btn-success.pull-right
+          i.fa.fa-credit-card
+          | &nbsp; Submit Payment
+        button.btn.btn-primary.pull-right style=("margin-right: 5px;") 
+          i.fa.fa-download
+          | &nbsp; Generate PDF
 
-= link_to 'Edit', edit_payment_path(@payment)
-'  |
-= link_to 'Back', payments_path
+
+= link_to 'Voltar', payments_path, class: "back-button"
