@@ -12,6 +12,13 @@ class PaymentsController < ApplicationController
     @payee = @payment.payee
     @payer = @payment.payer
     @total_spents = @payment.spents.map{ |spent| spent[:value] }.reduce(&:+)
+    respond_to do |format|
+      format.html do
+      end
+      format.pdf do
+        render pdf: "fatura_pagamento_#{@payment.id}", template: "payments/invoice.html.slim"
+      end
+    end
   end
 
   # GET /payments/new

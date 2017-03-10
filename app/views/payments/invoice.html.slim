@@ -1,6 +1,9 @@
-p#notice = notice
+= wicked_pdf_stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+= wicked_pdf_javascript_include_tag "application", "data-turbolinks-track" => true
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-section.content.content_content.invoice-container style=("width: 70%; margin: auto;") 
+section.content.content_content.invoice-container
   section.invoice
     .row
       .col-xs-12
@@ -39,7 +42,7 @@ section.content.content_content.invoice-container style=("width: 70%; margin: au
         b Conta: #{@payee.bank_account}
         br/
         b Agência: #{@payee.bank_agency}
-    .row
+    .container.row style="margin-top: 30px;"
       .col-xs-12.table-responsive
         table.table.table-striped
           thead
@@ -54,12 +57,3 @@ section.content.content_content.invoice-container style=("width: 70%; margin: au
             tr
                 td.strong Total
                 td.strong #{format_money(@total_spents)}
-    .row.no-print
-      .col-xs-12
-        = button_to "Gerar PDF", payment_path(@payment.id, format: :pdf), method: :get, class:"btn btn-primary pull-left"
-        button.btn.btn-success.pull-right
-          i.fa.fa-credit-card
-          | &nbsp; Pagar
-
-
-= link_to 'Voltar', payments_path, class: "back-button"
