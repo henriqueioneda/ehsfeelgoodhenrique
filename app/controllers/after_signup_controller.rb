@@ -12,10 +12,10 @@ class AfterSignupController < ApplicationController
     def update
         @user = current_user
         if params[:user]
-            @user.update_attributes(params.require(:user).permit(:acc_type))
+            @user.assign_attributes(params.require(:user).permit(:acc_type, :cc_number, :cc_name, :cc_exp, :cpf_cpnj))
         end
-        sign_in(@user, bypass: true)
-        render_wizard
+        bypass_sign_in(@user)
+        render_wizard @user
     end
 
     def finish_wizard_steps

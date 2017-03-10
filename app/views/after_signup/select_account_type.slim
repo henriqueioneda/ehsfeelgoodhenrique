@@ -1,9 +1,8 @@
 / .dark-font 
 /     h3 style="margin-bottom: 30px" Tipo da conta
-/     = simple_form_for @user, url: next_wizard_path do |f|
+/     = simple_form_for @user, url: wizard_path do |f|
 /         .form-check.form-check-inline
 /             label.control-label.radio-inline
-/                 = f.radio_button :acc_type, 0
 /                 |   Cliente
 /             label.control-label.radio-inline
 /                 = f.radio_button :acc_type, 1
@@ -13,59 +12,74 @@
 /                 |   Fornecedor
 
 /         = f.submit "Continuar", style: "margin-top: 15px; float:right", class: "btn btn-default"
-.container.select-account.dark-font style="margin-top: 40px; margin-bottom: -40px"
-  .row
-    .col-xs-12.col-md-3
-      .panel.panel-default
-        .panel-body
-          .the-price
-            h1
-              | Cliente
-          table.table
-            tr
-              td
-                | Procurar serviços
-            tr.active
-              td
-                | Pedir serviços
-            tr
-              td
-                | Acompanhar a execução dos serviços
-        .panel-footer
-          = link_to "Escolher", next_wizard_path(user: { acc_type: 0 }), class: "btn btn-success"
-    .col-xs-12.col-md-3
-      .panel.panel-default
-        .panel-body
-          .the-price
-            h1
-              | Integrador
-          table.table
-            tr
-              td
-                | Gerenciar serviços
-            tr.active
-              td
-                | Gerenciar pagamentos
-            tr
-              td
-                | Integrar fornecedores
-        .panel-footer
-          = link_to "Escolher", next_wizard_path(user: { acc_type: 1 }), class: "btn btn-success"
-    .col-xs-12.col-md-3
-      .panel.panel-info
-        .panel-body
-          .the-price
-            h1
-              | Fornecedor
-          table.table
-            tr
-              td
-                | Prestar serviços específicos
-            tr.active
-              td
-                | Divulgar serviços
-            tr
-              td
-                | Fácil recolhimento de pagamento
-        .panel-footer
-          = link_to "Escolher", next_wizard_path(user: { acc_type: 2 }), class: "btn btn-success"
+= simple_form_for @user, url: wizard_path do |f|
+  .container.select-account.dark-font style="margin-top: 40px; margin-bottom: -40px"
+    .row
+      .col-xs-12.col-md-3
+        .panel.panel-default.panel-1
+          .panel-body
+            .the-price
+              h1
+                | Cliente
+            table.table
+              tr
+                td
+                  | Procurar serviços
+              tr.active
+                td
+                  | Pedir serviços
+              tr
+                td
+                  | Acompanhar a execução dos serviços
+          .panel-footer
+            = f.radio_button :acc_type, 0, class: "panel-1-radio"
+
+      .col-xs-12.col-md-3
+        .panel.panel-default.panel-2
+          .panel-body
+            .the-price
+              h1
+                | Integrador
+            table.table
+              tr
+                td
+                  | Gerenciar serviços
+              tr.active
+                td
+                  | Gerenciar pagamentos
+              tr
+                td
+                  | Integrar fornecedores
+          .panel-footer
+            = f.radio_button :acc_type, 1, class: "panel-2-radio"
+      .col-xs-12.col-md-3
+        .panel.panel-info.panel-3
+          .panel-body
+            .the-price
+              h1
+                | Fornecedor
+            table.table
+              tr
+                td
+                  | Prestar serviços específicos
+              tr.active
+                td
+                  | Divulgar serviços
+              tr
+                td
+                  | Fácil recolhimento de pagamento
+          .panel-footer
+            = f.radio_button :acc_type, 2, class: "panel-3-radio"
+
+    = f.submit "Continuar", style: "margin-top: 50px", class: "btn btn-success"
+
+javascript:
+  $(".panel-1").click(function() {
+    $(".panel-1-radio").prop('checked', true);
+  });
+  $(".panel-2").click(function() {
+    $(".panel-2-radio").prop('checked', true);
+  });
+  $(".panel-3").click(function() {
+    $(".panel-3-radio").prop('checked', true);
+  });

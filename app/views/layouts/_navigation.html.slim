@@ -12,12 +12,28 @@ nav.navbar.navbar-default.navbar-fixed-top.topnav role="navigation"
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li
-          a href="#about"  About
+          a#about href="#about"  Sobre
         li
-          a href="#services"  Services
+          a#services href="#services"  Serviços
         li
-          a href="#contact"  Contact
+          a#contact href="#contact"  Contato
+        li
+          a#contact href="#contact"  Meus pagamentos
         = render 'layouts/nav_links_for_auth'
-    /! /.navbar-collapse
-  /! /.container
 
+javascript:
+  $("a#about").click(function() {
+    $('html, body').animate({
+        scrollTop: $("a#about-target").offset().top
+    }, 2000);
+  });
+  $("a#services").click(function() {
+    $('html, body').animate({
+        scrollTop: $("a#services-target").offset().top
+    }, 2000);
+  });
+  $("a#contact").click(function() {
+    $('html, body').animate({
+        scrollTop: $("a#contact-target").offset().top
+    }, 2000);
+  });

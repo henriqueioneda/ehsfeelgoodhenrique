@@ -11,5 +11,4 @@ class User < ApplicationRecord
       self.acc_type == self.class.acc_types[acc_type.to_sym]
     end
   end
-
 end
