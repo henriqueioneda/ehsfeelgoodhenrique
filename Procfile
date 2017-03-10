@@ -1,1 +1,1 @@
-release: rails db:migrate
+web: rails db:migrate && bin/rails server -p $PORT -e $RAILS_ENV
