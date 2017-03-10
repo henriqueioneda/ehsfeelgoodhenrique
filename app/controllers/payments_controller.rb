@@ -1,10 +1,9 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
-  # GET /payments
-  # GET /payments.json
   def index
-    @payments = Payment.all
+    @payments = current_user.payments
   end
 
   # GET /payments/1

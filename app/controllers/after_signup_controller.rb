@@ -19,6 +19,6 @@ class AfterSignupController < ApplicationController
     end
 
     def finish_wizard_steps
-        root_path
+        payments_path
     end
 end 
