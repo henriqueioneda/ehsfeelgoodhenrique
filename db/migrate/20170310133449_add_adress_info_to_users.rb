@@ -4,3 +4,4 @@ class AddAdressInfoToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :phone, :string
   end
 end
+  

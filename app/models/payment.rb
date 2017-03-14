@@ -7,4 +7,17 @@ class Payment < ApplicationRecord
     def due_date
         self.created_at + 10.days
     end
+
+    def pay
+        self.paid = true
+        save
+    end
+
+    def paid_at
+        self.updated_at
+    end
+
+    def total_spents
+        spents.map{ |spent| spent[:value] }.reduce(&:+)
+    end
 end

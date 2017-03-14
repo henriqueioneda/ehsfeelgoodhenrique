@@ -25,5 +25,5 @@
             .info.pad-top
               = button_to "Fatura", payment_path(payment.id), method: :get, class: "btn btn-default mar-bot"
               - if payment.paid?
-                = button_to "Comprovante", "#", class: "btn btn-default"
+                = button_to "Comprovante", receipt_payment_path(payment.id), method: :get, class: "btn btn-default"
               

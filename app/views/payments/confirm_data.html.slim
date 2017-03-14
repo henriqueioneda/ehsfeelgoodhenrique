@@ -1,0 +1,11 @@
+
+.row
+    .col-xs-6.col-xs-offset-3
+        .panel style="margin-top: 60px"
+            .panel-heading
+                h3 Confirme os dados de pagamento
+            .panel-body
+                = render partial: @payment.payer, layout: "users/with_payment"
+                = button_to pay_payment_path(@payment.id), method: :put, class:"btn btn-success pull-right" do
+                    i.fa.fa-credit-card
+                    | &nbsp; Confirmar

@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :set_payment, except: [:new, :index, :create]
   before_action :authenticate_user!
 
   def index
@@ -11,14 +11,31 @@ class PaymentsController < ApplicationController
   def show
     @payee = @payment.payee
     @payer = @payment.payer
-    @total_spents = @payment.spents.map{ |spent| spent[:value] }.reduce(&:+)
+    @total_spents = @payment.total_spents
     respond_to do |format|
-      format.html do
-      end
+      format.html {}
       format.pdf do
         render pdf: "fatura_pagamento_#{@payment.id}", template: "payments/invoice.html.slim"
       end
     end
+  end
+  
+  def receipt
+    @payer = @payment.payer
+    @payee = @payment.payee
+    @total_spents = @payment.total_spents
+  end
+
+  def confirm_data
+  end
+
+  def pay
+    if @payment.pay
+      flash[:notice] = "Pagamento pago com sucesso!"
+    else
+      flash[:notice] = "Ocorreu um problema com o pagamento, tente novamente mais tarde."
+    end
+    redirect_to payment_path(@payment)
   end
 
   # GET /payments/new

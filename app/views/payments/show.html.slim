@@ -1,40 +1,30 @@
-p#notice = notice
-
 section.content.content_content.invoice-container style=("width: 70%; margin: auto;") 
   section.invoice
     .row
       .col-xs-12
-        h2.page-header
-          | EHSFeelGood
-          small.pull-right Emissão: #{Time.now.strftime("%d/%m/%y %H:%M:%S")}
+        - if @payment.paid?
+          h2.page-header.text-danger
+            | PAGO
+            small.pull-right Emissão: #{Time.now.strftime("%d/%m/%y %H:%M:%S")}
+        - else
+          h2.page-header
+            | EHSFeelGood
+            small.pull-right Emissão: #{Time.now.strftime("%d/%m/%y %H:%M:%S")}
     .row.invoice-info
       .col-sm-4.invoice-col
         | De
-        address.dark-font
-          strong
-            | #{@payer}
-          br/
-          | #{@payer.address}
-          br/
-          | #{@payer.phone}
-          br/
-          | #{@payer.email}
+        = render @payer
       .col-sm-4.invoice-col
         | Para
-        address.dark-font
-          strong
-            | #{@payee}
-          br/
-          | #{@payee.address}
-          br/
-          | #{@payee.phone}
-          br/
-          | #{@payee.email}
+        = render @payee
       .col-sm-4.invoice-col
         b Fatura do pagamento #{@payment.id}
         br/
         br/
-        b.text-danger Vencimento: #{@payment.due_date.strftime("%d/%m/%y")}
+        - if !@payment.paid?
+          b.text-danger Vencimento: #{@payment.due_date.strftime("%d/%m/%y")}
+        - else
+          b Vencimento: #{@payment.due_date.strftime("%d/%m/%y")}
         br/
         b Conta: #{@payee.bank_account}
         br/
@@ -57,9 +47,10 @@ section.content.content_content.invoice-container style=("width: 70%; margin: au
     .row.no-print
       .col-xs-12
         = button_to "Gerar PDF", payment_path(@payment.id, format: :pdf), method: :get, class:"btn btn-primary pull-left"
-        button.btn.btn-success.pull-right
-          i.fa.fa-credit-card
-          | &nbsp; Pagar
+        - if current_user != @payer && !@payment.paid?
+          = button_to confirm_data_payment_path(@payment.id), method: :get, class:"btn btn-success pull-right" do
+            i.fa.fa-credit-card
+            | &nbsp; Pagar
 
 
 = link_to 'Voltar', payments_path, class: "back-button"
