@@ -47,7 +47,7 @@ section.content.content_content.invoice-container style=("width: 70%; margin: au
     .row.no-print
       .col-xs-12
         = button_to "Gerar PDF", payment_path(@payment.id, format: :pdf), method: :get, class:"btn btn-primary pull-left"
-        - if current_user != @payer && !@payment.paid?
+        - if current_user == @payer && !@payment.paid?
           = button_to confirm_data_payment_path(@payment.id), method: :get, class:"btn btn-success pull-right" do
             i.fa.fa-credit-card
             | &nbsp; Pagar
