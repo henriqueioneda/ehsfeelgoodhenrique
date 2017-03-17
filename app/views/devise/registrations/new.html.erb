@@ -3,7 +3,7 @@
     <h3>Afiliação</h3>
     <%= devise_error_messages! %>
     <div class="form-group">
-      <%= f.label :nome %>
+      <%= f.label :name, "Nome" %>
       <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
     </div>
     <div class="form-group">
@@ -11,11 +11,11 @@
       <%= f.email_field :email, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :senha %>
+      <%= f.label :password, "Senha" %>
       <%= f.password_field :password, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label "Confirmação da senha" %>
+      <%= f.label :password_confirmation, "Confirmação da senha" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
      <%= f.submit 'Afiliar-se', :class => 'button right' %>

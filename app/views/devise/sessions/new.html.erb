@@ -13,7 +13,7 @@
       <%- if devise_mapping.recoverable? %>
         <%= link_to "Esqueceu sua senha?", new_password_path(resource_name), class: 'right' %>
       <% end -%>
-      <%= f.label :senha %>
+      <%= f.label :password, "Senha" %>
       <%= f.password_field :password, class: 'form-control' %>
     </div>
       <%= f.submit 'Entrar', :class => 'button right' %>

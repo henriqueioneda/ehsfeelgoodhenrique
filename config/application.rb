@@ -9,6 +9,8 @@ Bundler.require(*Rails.groups)
 module Ehsfeelgoodhenrique
   class Application < Rails::Application
 
+    config.i18n.default_locale = :pt
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
