@@ -2,6 +2,7 @@ class Payment < ApplicationRecord
     belongs_to :payee, class_name: "User", foreign_key: :payee_id
     belongs_to :payer, class_name: "User", foreign_key: :payer_id
 
+    # {name: string, value: string}
     serialize :spents, Array
 
     def due_date
