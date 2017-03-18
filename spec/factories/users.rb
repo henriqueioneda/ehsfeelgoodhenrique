@@ -28,5 +28,8 @@ FactoryGirl.define do
         create :payment, :with_spents, payer: user
       end
     end
+    trait :with_cpu_usage do
+      cpu_usage 100
+    end
   end
 end

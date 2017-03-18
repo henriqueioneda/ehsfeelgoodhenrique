@@ -11,8 +11,13 @@ class ApplicationController < ActionController::Base
   end
   
   def stop_charging
-    current_user.cpu_time += (Time.now - @start_time).in_milliseconds.to_i
-    current_user.save
+    if current_user
+      current_user.transaction do
+        curent_user.cpu_usage = 0 if current_user.cpu_usage.nil?
+        current_user.cpu_usage += (Time.now - @start_time).in_milliseconds.to_i
+        current_user.save
+      end
+    end
   end
 
   def configure_permitted_parameters
