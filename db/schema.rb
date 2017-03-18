@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170310141138) do
+ActiveRecord::Schema.define(version: 20170318174803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 20170310141138) do
   create_table "payments", force: :cascade do |t|
     t.money    "value",      scale: 2
     t.string   "method"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "payer_id"
     t.integer  "payee_id"
-    t.boolean  "paid"
+    t.boolean  "paid",                 default: false
     t.text     "spents"
   end
 
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170310141138) do
     t.string   "bank_agency"
     t.string   "address"
     t.string   "phone"
+    t.integer  "cpu_usage",              default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
