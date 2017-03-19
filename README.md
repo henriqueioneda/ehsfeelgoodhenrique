@@ -1,7 +1,6 @@
 Ehsfeelgoodhenrique
 ================
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 [![Build](https://travis-ci.org/henriqueioneda/ehsfeelgoodhenrique.svg?branch=master)](https://travis-ci.org/henriqueioneda/ehsfeelgoodhenrique)
 
 This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
