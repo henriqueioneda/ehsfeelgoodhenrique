@@ -20,7 +20,6 @@ section.content.content_content.invoice-container style=("width: 70%; margin: au
       .col-sm-4.invoice-col
         b Fatura do pagamento #{@payment.id}
         br/
-        br/
         - if !@payment.paid?
           b.text-danger Vencimento: #{@payment.due_date.strftime("%d/%m/%y")}
         - else

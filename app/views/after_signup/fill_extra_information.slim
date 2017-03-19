@@ -26,11 +26,6 @@
                 = f.label "Data de expiração", class: "control-label col-sm-2 col-sm-offset-1"
                 .col-sm-2
                     = f.text_field :cc_exp, autofocus: true, class: "form-control"
-        - elsif @user.integrator?
-            .form-group
-                = f.label "CNPJ", class: "control-label col-sm-2"
-                .col-sm-6
-                    = f.text_field :cpf_cnpj, autofocus: true, class: "form-control"
         - else
             .form-group
                 = f.label "CNPJ", class: "control-label col-sm-2 col-sm-offset-1" 

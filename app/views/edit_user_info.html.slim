@@ -17,10 +17,6 @@
     .form-group
         = f.label "Data de expiração"
         = f.text_field :cc_exp, autofocus: true, class: "form-control"
-- elsif @user.integrator?
-    .form-group
-        = f.label "CNPJ"
-        = f.text_field :cpf_cnpj, autofocus: true, class: "form-control"
 - else
     .form-group
         = f.label "CNPJ" 
@@ -31,3 +27,6 @@
     .form-group
         = f.label "Agência" 
         = f.text_field :bank_agency, autofocus: true, class: "form-control"
+    .form-group
+        = f.label "Telefone"
+        = f.text_field :phone, class: "form-control"

@@ -32,7 +32,9 @@ class User < ApplicationRecord
   end
 
   def charge_for_use
-    (self.cpu_usage * CPU_USAGE_MULTIPLIER + Payment.recent.where(payer: self).count * PAYER_USAGE_MULTIPLIER + Payment.recent.where(payee: self).count * PAYEE_USAGE_MULTIPLIER) * PRICE_MULTIPLIER
+    (self.cpu_usage * CPU_USAGE_MULTIPLIER 
+    + Payment.recent.where(payer: self).count * PAYER_USAGE_MULTIPLIER 
+    + Payment.recent.where(payee: self).count * PAYEE_USAGE_MULTIPLIER) * PRICE_MULTIPLIER
   end
 
   def reset_charges
