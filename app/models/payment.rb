@@ -12,7 +12,7 @@ class Payment < ApplicationRecord
 
     def pay
         self.paid = true
-        if payment.payee == User.company 
+        if self.payee == User.company 
             self.user.reset_charges
         end
         save
